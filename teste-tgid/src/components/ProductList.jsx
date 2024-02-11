@@ -6,20 +6,20 @@ const Button = styled.button`
     border: 2px solid;
     color: rgb(238, 108, 77);
     padding: 0.25em 1em;
-    margin-top: auto;
+    width: fit-content;
+    height: fit-content;
 `
 
 const ListProducts = styled.ul`
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
     list-style: none;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    padding: 0;
+   
 `
 
 const ItemList = styled.li`
-    display: flex;
-    flex-direction: column;
-    margin: 20px;
+    flex: 1 1 300px;
+    margin: 10px; 
 `
 
 const MainContainer = styled.div`
@@ -30,7 +30,7 @@ const MainContainer = styled.div`
 const ItemCart = styled.li`
     display: flex;
     justify-content: space-between;
-    margin: 20px;
+    align-items: center
 `
 
 const ProductContainer = styled.div`
@@ -39,11 +39,19 @@ const ProductContainer = styled.div`
 `
 
 const CartContainer = styled.div`
-display: flex;
-flex-direction: column;
-margin-right: 5%;
-padding: 6%;
-width: 20%
+    display: flex;
+    flex-direction: column;
+    margin-right: 5%;
+    padding: 6%;
+    width: 45%
+`
+
+const ImageProduct = styled.img`
+    max-width: 50%;
+`
+
+const CartText = styled.p`
+    margin-right: 10px;
 `
 
 const Cart = () => {
@@ -84,7 +92,8 @@ const Cart = () => {
                         {products.map(product => (
                             <ItemList>
                                 <p>{product.nome}</p>
-                                <p>{product.descricao}</p>
+                                <p>{product.autor}</p>
+                                <ImageProduct src={product.image} alt='capa do livro'></ImageProduct>
                                 <p>R${product.preco}</p>
                                 <Button onClick={() => addProduct(product)}>Adicionar ao carrinho</Button>
                             </ItemList>
@@ -97,7 +106,7 @@ const Cart = () => {
                         <ListProducts>
                             {cart.map(productCart => (
                                 <ItemCart>
-                                    <p>{productCart.nome} - R${productCart.preco}</p>
+                                    <CartText>{productCart.nome} - R${productCart.preco}</CartText>
                                     <Button onClick={() => removeProduct(productCart.id)}>Remover</Button>
                                 </ItemCart>
                             ))}

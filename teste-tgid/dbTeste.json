@@ -2,40 +2,47 @@
     "produtos": [
       {
         "id": 1,
-        "nome": "Hambúrguer",
-        "descricao": "Pão, bife de hambúrguer 90g, salada e batata.",
-        "preco": 8.50
+        "nome": "Moby Dick, ou a Baleia",
+        "autor": "Herman Melville",
+        "preco": 68.50,
+        "image": "https://m.media-amazon.com/images/I/61kif0Iav7L._SY466_.jpg"
 
       },
       {
         "id": 2,
-        "nome": "X-Búrguer",
-        "descricao": "Pão, bife de hambúrguer 90g, 1 fatia de queijo, salada e batata.",
-        "preco": 10.32
+        "nome": "Anne de Green Gables",
+        "autor": "L. M. Montgomery",
+        "preco": 10.32,
+        "image": "https://m.media-amazon.com/images/I/513yOc9k7LL._SY445_SX342_.jpg"
+
       },
       {
         "id": 3,
-        "nome": "X-Bacon",
-        "descricao": "Pão, bife de hambúrguer 90g, 1 fatia de queijo, 2 fatia de bacon, salada e batata.",
-        "preco": 12.54
+        "nome": "O senhor dos aneis",
+        "autor": "J.R. Tolkien",
+        "preco": 52.54,
+        "image": "https://m.media-amazon.com/images/I/91k0NXj1+wL._SY466_.jpg"
       },
       {
         "id": 4,
-        "nome": "X-Tudo",
-        "descricao": "Pão, 2 bifes de hambúrguer 90g, 2 fatias de queijo, 4 fatias de bacon, salada e batata.",
-        "preco": 14.58
+        "nome": "O oceano no fim do caminho",
+        "autor": "Neil Gaiman",
+        "preco": 14.58,
+        "image": "https://m.media-amazon.com/images/I/7181lUEJgyL._SY466_.jpg"
       },
       {
         "id": 5,
-        "nome": "Coca cola 350ml",
-        "descricao": "Coquinha geladinha",
-        "preco": 5.50
+        "nome": "O morro dos ventos uivantes",
+        "autor": "Emily Brontë",
+        "preco": 25.50,
+        "image": "https://m.media-amazon.com/images/I/51sz0nn7u9L._SY445_SX342_.jpg"
       },
       {
         "id": 6,
-        "nome": "Coca cola 600ml",
-        "descricao": "",
-        "preco": 7.50
+        "nome": "Dracula",
+        "autor": "Bran Stoker",
+        "preco": 37.50,
+        "image": "https://m.media-amazon.com/images/I/41UN7I4TiGL._SY445_SX342_.jpg"
       }
     ]
   }

@@ -4,7 +4,7 @@ import Cart from './components/ProductList';
 function App() {
   return (
    <>
-    <h1>Todos os produtos</h1>
+    <h1>Livraria</h1>
     <Cart/>
    </>
   )
