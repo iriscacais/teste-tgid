@@ -16,6 +16,15 @@ const Cart = () => {
         }
         // console.log(cart)
 
+        const removeProduct = (id) => {
+            const newCart = cart.filter(product => product.id !== id)
+            setCart(newCart)
+        }
+
+        const totalPrice = () => {
+            return cart.reduce((total, product) => total + product.preco, 0);
+        }
+
         return (
             <main>
                 <div>
@@ -39,11 +48,11 @@ const Cart = () => {
                                 <li key={productCart.id}>
                                     {productCart.nome}
                                     {productCart.preco}
-                                    <button>Remover</button>
+                                    <button onClick={() => removeProduct(productCart.id)}>Remover</button>
                                 </li>
                             ))}
                         </ul>
-                        <p>Total:</p>       
+                        <p>Total: {totalPrice()} </p>       
                 </div>
             </main>
         )
