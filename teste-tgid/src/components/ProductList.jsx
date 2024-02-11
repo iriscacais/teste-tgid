@@ -1,61 +1,105 @@
 import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
+
+const Button = styled.button`
+    border-radius: 7px;
+    border: 2px solid;
+    color: rgb(238, 108, 77);
+    padding: 0.25em 1em;
+    margin-top: auto;
+`
+
+const ListProducts = styled.ul`
+    display: grid;
+    list-style: none;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    padding: 0;
+`
+
+const ItemList = styled.li`
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+`
+
+const MainContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+`
+
+const ItemCart = styled.li`
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+`
+
+const ProductContainer = styled.div`
+    margin-left: 8%;
+    margin-top: 3%;
+`
+
+const CartContainer = styled.div`
+display: flex;
+flex-direction: column;
+padding: 6%;
+width: 20%
+`
 
 const Cart = () => {
-        const [products, setProducts] = useState([])
-        const [cart, setCart] = useState([])
+    const [products, setProducts] = useState([])
+    const [cart, setCart] = useState([])
 
-        useEffect(() => {
-            fetch('http://localhost:3001/produtos')
-            .then(response => response.json())
-            .then(data => setProducts(data));
-        }, []);
+    useEffect(() => {
+        fetch('http://localhost:3001/produtos')
+        .then(response => response.json())
+        .then(data => setProducts(data));
+    }, []);
         // console.log(products)
     
-        const addProduct = (product) => {
-            setCart([...cart, product]);
-        }
+    const addProduct = (product) => {
+        setCart([...cart, product]);
+    }
         // console.log(cart)
 
-        const removeProduct = (id) => {
-            const newCart = cart.filter(product => product.id !== id)
-            setCart(newCart)
-        }
+    const removeProduct = (id) => {
+        const newCart = cart.filter(product => product.id !== id)
+        setCart(newCart)
+    }
 
-        const totalPrice = () => {
-            return cart.reduce((total, product) => total + product.preco, 0);
-        }
+    const totalPrice = () => {
+        return cart.reduce((total, product) => total + product.preco, 0);
+    }
 
         return (
-            <main>
-                <div>
-                    <h2>Lista de produtos</h2>
-                        <ul>
-                            {products.map(product => (
-                                 <li key={product.id}>
-                                    {product.nome}
-                                    {product.descricao}
-                                    {product.preco}
-                                    <button onClick={() => addProduct(product)}>Adicionar ao carrinho</button>
-                                 </li>
+            <MainContainer>
+                <ProductContainer>
+                    <ListProducts>
+                        {products.map(product => (
+                            <ItemList key={product.id}>
+                                <p>{product.nome}</p>
+                                <p>{product.descricao}</p>
+                                <p>R${product.preco}</p>
+                                <Button onClick={() => addProduct(product)}>Adicionar ao carrinho</Button>
+                            </ItemList>
                         
                             ))}
-                        </ul>
-                </div>
-                <div>
+                    </ListProducts>
+                </ProductContainer>
+                <CartContainer>
                     <h2>Carrinho</h2>
-                        <ul>
+                        <ListProducts>
                             {cart.map(productCart => (
-                                <li key={productCart.id}>
-                                    {productCart.nome}
-                                    {productCart.preco}
-                                    <button onClick={() => removeProduct(productCart.id)}>Remover</button>
-                                </li>
+                                <ItemCart key={productCart.id}>
+                                    <p>{productCart.nome} - R${productCart.preco}</p>
+                                   
+                                    <Button onClick={() => removeProduct(productCart.id)}>Remover</Button>
+                                </ItemCart>
                             ))}
-                        </ul>
-                        <p>Total: {totalPrice()} </p>       
-                </div>
-            </main>
+                        </ListProducts>
+                        <p>Total: R${totalPrice()} </p>       
+                </CartContainer>
+            </MainContainer>
         )
-    } 
+} 
 
 export default Cart;
