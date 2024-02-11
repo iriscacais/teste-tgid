@@ -41,6 +41,7 @@ const ProductContainer = styled.div`
 const CartContainer = styled.div`
 display: flex;
 flex-direction: column;
+margin-right: 5%;
 padding: 6%;
 width: 20%
 `
@@ -72,7 +73,8 @@ const Cart = () => {
     }
 
     const totalPrice = () => {
-        return cart.reduce((total, product) => total + product.preco, 0);
+        const price = cart.reduce((total, product) => total + product.preco, 0);
+        return price.toFixed(2);
     }
 
         return (
@@ -96,7 +98,6 @@ const Cart = () => {
                             {cart.map(productCart => (
                                 <ItemCart>
                                     <p>{productCart.nome} - R${productCart.preco}</p>
-                                   
                                     <Button onClick={() => removeProduct(productCart.id)}>Remover</Button>
                                 </ItemCart>
                             ))}
