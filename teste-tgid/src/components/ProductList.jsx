@@ -62,8 +62,13 @@ const Cart = () => {
         // console.log(cart)
 
     const removeProduct = (id) => {
-        const newCart = cart.filter(product => product.id !== id)
-        setCart(newCart)
+        const itemToRemove = cart.findIndex(product => product.id === id)
+        if (itemToRemove !== -1) {
+            const newCart = [...cart];
+            newCart.splice(itemToRemove, 1);
+            setCart(newCart)
+        }
+        
     }
 
     const totalPrice = () => {
@@ -75,7 +80,7 @@ const Cart = () => {
                 <ProductContainer>
                     <ListProducts>
                         {products.map(product => (
-                            <ItemList key={product.id}>
+                            <ItemList>
                                 <p>{product.nome}</p>
                                 <p>{product.descricao}</p>
                                 <p>R${product.preco}</p>
@@ -89,7 +94,7 @@ const Cart = () => {
                     <h2>Carrinho</h2>
                         <ListProducts>
                             {cart.map(productCart => (
-                                <ItemCart key={productCart.id}>
+                                <ItemCart>
                                     <p>{productCart.nome} - R${productCart.preco}</p>
                                    
                                     <Button onClick={() => removeProduct(productCart.id)}>Remover</Button>
